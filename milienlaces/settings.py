@@ -25,6 +25,7 @@ SECRET_KEY = '6i9w8(kk84&ml=46(i6gj224t8(d%keqfa^uud@rpdi_f&mu5z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = ['localhost','127.0.0.1']
 ALLOWED_HOSTS = []
 
 
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'milienlaces.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
+
+# test reset password email
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

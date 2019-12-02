@@ -16,14 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import RedirectView
+from django.conf.urls import include
 
 # TODO fix these endpoints ?!
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', admin.site.urls),
-    path('user/<int:userid>/',  admin.site.urls),
-    path('link/<int:linkid>/<str:action>/', admin.site.urls),
+  #  path('login/', admin.site.urls), # TODO missing logout, reset pwd etc
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('enlaces.urls')),
+#    path('user/<int:userid>/',  admin.site.urls),
+#    path('link/<int:linkid>/<str:action>/', admin.site.urls),
     path('batch/opps/', admin.site.urls),
     path('batch/links/', admin.site.urls),
-    path('', RedirectView.as_view(url='user/')),
+#    path('', RedirectView.as_view(url='user/')),
 ]

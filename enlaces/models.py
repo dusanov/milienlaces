@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Client(models.Model):
     name = models.CharField(max_length=50, blank=False)
@@ -16,10 +17,10 @@ class Client(models.Model):
     class Meta: ordering = ['name']
     def __str__(self): return f'{self.domain}'
 
-# TODO user FK
 class Link(models.Model):
     def __str__(self): return f'{self.url}'
     # TODO check if on delete is correct
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, blank=False, null=False)
     url = models.URLField(blank=False)
     note = models.TextField
