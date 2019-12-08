@@ -9,7 +9,7 @@ General
  * when adding link, set user to logged in user and hide it from add / update form *ready*
  * setting target on status change to ?
  * batch opps processing
- * validation on new link if the url is already in use
+ * validation on new link if the url is already in use *not ready* url.netloc/client/user/link_type - validation logic must be in overriden Model.clean() def clean(self): // try not to iterate over all objects but to filter on url.netloc (add netloc field to model and save it on insert) *ready*
 
 App flow
 ========
@@ -24,4 +24,5 @@ App flow
  * nice to have date range on filter form
  * more filter options: client status.
  * validation on form fields: dates...
- * sanitize data: self.cleaned_data['renewal_date'] 
+ * sanitize data: self.cleaned_data['renewal_date'] * fix error msgs on link insert - tuples resolve name *ready* 
+ * fix netloc read only shit
